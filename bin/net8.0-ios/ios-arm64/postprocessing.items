@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <_PostProcessingItem Include="ZoharBible.app/ZoharBible">
+      <IsAppExtension>false</IsAppExtension>
+      <BCSymbolMapName>ZoharBible.bcsymbolmap</BCSymbolMapName>
+      <NoDSymUtil>false</NoDSymUtil>
+      <dSYMSourcePathExists>false</dSYMSourcePathExists>
+      <NoSymbolStrip>false</NoSymbolStrip>
+      <dSYMInfoPlistRelativePath>ZoharBible.app.dSYM\Contents\Info.plist</dSYMInfoPlistRelativePath>
+      <SymbolFile>/Volumes/TT7/Projects/RiderProjects/ZoharBible/ZoharBible/obj/net8.0-ios/ios-arm64/mtouch-symbols.list</SymbolFile>
+      <DSymName>ZoharBible.app.dSYM</DSymName>
+      <SourceProjectPath>/Volumes/TT7/Projects/RiderProjects/ZoharBible/ZoharBible</SourceProjectPath>
+      <IsXPCService></IsXPCService>
+    </_PostProcessingItem>
+  </ItemGroup>
+</Project>

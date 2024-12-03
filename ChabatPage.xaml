@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ZoharBible"
+             x:Class="ZoharBible.ChabatPage"
+             BackgroundColor="{x:Static local:Themes.PageBackgroundC}">
+    <ContentPage.Content>
+        <VerticalStackLayout>
+            <!-- Entry for URL input -->
+            <Entry x:Name="UrlEntry" 
+                   Placeholder="Enter URL"
+                   Text="https://www.chabad.org/dailystudy/default_cdo/jewish/Daily-Study.htm"
+                   HorizontalOptions="FillAndExpand"
+                   Focused="UrlEntry_Focused" 
+                   TextColor="Black"
+                   BackgroundColor="WhiteSmoke"/>
+               
+            <!-- Button to Load the Web Page -->
+            <Button Text="Load URL" 
+                    Clicked="OnLoadUrlClicked"
+                    BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                    TextColor="{x:Static local:Themes.ButtonTextC}"
+                    BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                    HorizontalOptions="Center">
+                
+               
+            </Button>
+            <!-- WebView to display the web page -->
+            <WebView x:Name="Browser"
+                     HeightRequest="1000"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"/>
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>

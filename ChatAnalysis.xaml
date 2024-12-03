@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ZoharBible"
+             x:Class="ZoharBible.ChatAnalysis"
+             BackgroundColor="{x:Static local:Themes.PageBackgroundC}">
+    <ContentPage.Resources>
+        <Style TargetType="Frame">
+            <Setter Property="BorderColor" Value="{x:Static local:Themes.ButtonBorderC}" />
+            <Setter Property="BackgroundColor" Value="{x:Static local:Themes.ButtonBackgroundC}" />
+            <Setter Property="Margin" Value="3" />
+        </Style>
+    </ContentPage.Resources>
+    <Frame
+        Grid.Row="1"
+        BorderColor="{x:Static local:Themes.ButtonBorderC}"
+        BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+        CornerRadius="0"
+        Padding="5">
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Editor
+                x:Name="ChatAnalysisText"
+                AutoSize="TextChanges"
+                BackgroundColor="{x:Static local:Themes._AnalyzeBack}"
+                TextColor="{x:Static local:Themes._AnalyzeText}"
+                FontSize="18"
+                Placeholder="Busy getting the analysis, patience please..."
+                PlaceholderColor="{x:Static local:Themes.ButtonTextC}"
+                VerticalOptions="FillAndExpand"
+                />
+            <!-- Toegevoegde knop -->
+            <Button
+                Text="Speak the Text"
+                BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                VerticalOptions="End"
+                Clicked="OnSpeakButtonClicked"
+                TextColor="{x:Static local:Themes.ButtonTextC}"
+                HorizontalOptions="FillAndExpand"
+                BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                BorderWidth="2">
+            </Button>
+            
+            <Button
+                Text="Stop Speaking"
+                BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                TextColor="{x:Static local:Themes.ButtonTextC}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="End"
+                Clicked="OnStopSpeakButtonClicked"
+                BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                BorderWidth="2">
+            </Button>
+            
+            <!-- Toegevoegd Label -->
+            <Label
+                x:Name="messageLabel"
+                Text="..."
+                BackgroundColor="{x:Static local:Themes.MessageLabelBackgroundC}"
+                TextColor="{x:Static local:Themes.MessageLabelTextC}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                Padding="10"
+            />
+        </StackLayout>
+    </Frame>
+</ContentPage>

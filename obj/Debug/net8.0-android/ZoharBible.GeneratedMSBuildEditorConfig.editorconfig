@@ -1,0 +1,101 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = true
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0-android
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ZoharBible
+build_property.ProjectDir = /Volumes/TT7/Projects/RiderProjects/ZoharBibleFull/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+
+[/Volumes/TT7/Projects/RiderProjects/ZoharBibleFull/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ZoharBible.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[/Volumes/TT7/Projects/RiderProjects/ZoharBibleFull/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ZoharBible.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[/Volumes/TT7/Projects/RiderProjects/ZoharBibleFull/ChabatPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ZoharBible.ChabatPage.xaml
+build_metadata.AdditionalFiles.TargetPath = ChabatPage.xaml
+build_metadata.AdditionalFiles.RelativePath = ChabatPage.xaml
+
+[/Volumes/TT7/Projects/RiderProjects/ZoharBibleFull/ChatAnalysis.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ZoharBible.ChatAnalysis.xaml
+build_metadata.AdditionalFiles.TargetPath = ChatAnalysis.xaml
+build_metadata.AdditionalFiles.RelativePath = ChatAnalysis.xaml
+
+[/Volumes/TT7/Projects/RiderProjects/ZoharBibleFull/HeyComputer.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ZoharBible.HeyComputer.xaml
+build_metadata.AdditionalFiles.TargetPath = HeyComputer.xaml
+build_metadata.AdditionalFiles.RelativePath = HeyComputer.xaml
+
+[/Volumes/TT7/Projects/RiderProjects/ZoharBibleFull/Horoscope.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ZoharBible.Horoscope.xaml
+build_metadata.AdditionalFiles.TargetPath = Horoscope.xaml
+build_metadata.AdditionalFiles.RelativePath = Horoscope.xaml
+
+[/Volumes/TT7/Projects/RiderProjects/ZoharBibleFull/Intro.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ZoharBible.Intro.xaml
+build_metadata.AdditionalFiles.TargetPath = Intro.xaml
+build_metadata.AdditionalFiles.RelativePath = Intro.xaml
+
+[/Volumes/TT7/Projects/RiderProjects/ZoharBibleFull/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ZoharBible.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+
+[/Volumes/TT7/Projects/RiderProjects/ZoharBibleFull/Proverbs.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ZoharBible.Proverbs.xaml
+build_metadata.AdditionalFiles.TargetPath = Proverbs.xaml
+build_metadata.AdditionalFiles.RelativePath = Proverbs.xaml
+
+[/Volumes/TT7/Projects/RiderProjects/ZoharBibleFull/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ZoharBible.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources/Styles/Colors.xaml
+
+[/Volumes/TT7/Projects/RiderProjects/ZoharBibleFull/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ZoharBible.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources/Styles/Styles.xaml
+
+[/Volumes/TT7/Projects/RiderProjects/ZoharBibleFull/StartPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ZoharBible.StartPage.xaml
+build_metadata.AdditionalFiles.TargetPath = StartPage.xaml
+build_metadata.AdditionalFiles.RelativePath = StartPage.xaml
+
+[/Volumes/TT7/Projects/RiderProjects/ZoharBibleFull/Tarot.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ZoharBible.Tarot.xaml
+build_metadata.AdditionalFiles.TargetPath = Tarot.xaml
+build_metadata.AdditionalFiles.RelativePath = Tarot.xaml
+
+[/Volumes/TT7/Projects/RiderProjects/ZoharBibleFull/TestAudioRecording.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ZoharBible.TestAudioRecording.xaml
+build_metadata.AdditionalFiles.TargetPath = TestAudioRecording.xaml
+build_metadata.AdditionalFiles.RelativePath = TestAudioRecording.xaml

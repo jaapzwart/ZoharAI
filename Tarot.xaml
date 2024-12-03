@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="ZoharBible.Tarot"
+            xmlns:local="clr-namespace:ZoharBible"
+            BackgroundColor="{x:Static local:Themes.PageBackgroundC}">
+    <Grid Padding="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" /> 
+            <RowDefinition Height="Auto" /> 
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" /> 
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <!-- Labels above Tarot Cards -->
+        <Label Text="PAST" 
+               Grid.Row="0" Grid.Column="0"
+               HorizontalOptions="Center" 
+               TextColor="{x:Static local:Themes.ButtonTextC}" 
+               FontAttributes="Bold"/>
+        <Label Text="PRESENT" 
+               Grid.Row="0" Grid.Column="1"
+               HorizontalOptions="Center" 
+               TextColor="{x:Static local:Themes.ButtonTextC}" 
+               FontAttributes="Bold"/>
+        <Label Text="FUTURE" 
+               Grid.Row="0" Grid.Column="2"
+               HorizontalOptions="Center" 
+               TextColor="{x:Static local:Themes.ButtonTextC}" 
+               FontAttributes="Bold"/>
+        <!-- Tarot Cards -->
+        <Frame Padding="0" HasShadow="False" CornerRadius="5" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnCardTapped" CommandParameter="1"/>
+            </Frame.GestureRecognizers>
+            <Image x:Name="card1Image" Source="http://scrumara.azurewebsites.net/images/taroth/80.jpg" VerticalOptions="FillAndExpand" Aspect="AspectFit"/>
+        </Frame>
+        <Frame Padding="0" HasShadow="False" CornerRadius="5" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnCardTapped" CommandParameter="2"/>
+            </Frame.GestureRecognizers>
+            <Image x:Name="card2Image" Source="http://scrumara.azurewebsites.net/images/taroth/80.jpg" VerticalOptions="FillAndExpand" Aspect="AspectFit"/>
+        </Frame>
+        <Frame Padding="0" HasShadow="False" CornerRadius="5" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="2">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnCardTapped" CommandParameter="3"/>
+            </Frame.GestureRecognizers>
+            <Image x:Name="card3Image" Source="http://scrumara.azurewebsites.net/images/taroth/80.jpg" VerticalOptions="FillAndExpand" Aspect="AspectFit"/>
+        </Frame>
+        <!-- Shuffle button -->
+        <Button Grid.Row="2" Grid.ColumnSpan="3" Text="Shuffle"
+                BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}" TextColor="{x:Static local:Themes.ButtonTextC}" BorderColor="{x:Static local:Themes.ButtonBorderC}" BorderWidth="2"
+                Clicked="OnShuffleClicked"
+                VerticalOptions="Start" Margin="0,20,0,0" >
+           
+        </Button>
+        <!-- CheckBoxes -->
+        <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="3"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Start"
+                     Spacing="10"
+                     Margin="0,20,0,10">
+            <StackLayout Orientation="Horizontal" Spacing="2">
+                <CheckBox x:Name="ChatGPTCheckBox"
+                          Color="{x:Static local:Themes.ButtonTextC}"
+                          CheckedChanged="OnChatbotCheckBoxChanged" />
+                <Label Text="ChatGPT"
+                       TextColor="{x:Static local:Themes.ButtonTextC}"
+                       VerticalTextAlignment="Center" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+                <CheckBox x:Name="GroKCheckBox"
+                          Color="{x:Static local:Themes.ButtonTextC}"
+                          IsChecked="True"
+                          CheckedChanged="OnChatbotCheckBoxChanged" />
+                <Label Text="GroK"
+                       TextColor="{x:Static local:Themes.ButtonTextC}"
+                       VerticalTextAlignment="Center" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+                <CheckBox x:Name="GeminiCheckBox"
+                          Color="{x:Static local:Themes.ButtonTextC}"
+                          CheckedChanged="OnChatbotCheckBoxChanged" />
+                <Label Text="Gemini"
+                       TextColor="{x:Static local:Themes.ButtonTextC}"
+                       VerticalTextAlignment="Center" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+                <CheckBox x:Name="AllAICheckBox"
+                          Color="{x:Static local:Themes.ButtonTextC}"
+                          CheckedChanged="OnChatbotCheckBoxChanged" />
+                <Label Text="AllAI"
+                       TextColor="{x:Static local:Themes.ButtonTextC}"
+                       VerticalTextAlignment="Center" />
+            </StackLayout>
+        </StackLayout>
+        <!-- New CheckBoxes Section -->
+        <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.ColumnSpan="3"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Start"
+                     Spacing="10"
+                     Margin="0,40,0,10"> <!-- Increased the top margin to create double space -->
+            <StackLayout Orientation="Horizontal" Spacing="2">
+                <CheckBox x:Name="OnlineInfoCheckBox"
+                          Color="{x:Static local:Themes.ButtonTextC}"
+                          CheckedChanged="OnInfoCheckBoxChanged" />
+                <Label Text="Online Info"
+                       TextColor="{x:Static local:Themes.ButtonTextC}"
+                       VerticalTextAlignment="Center" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+                <CheckBox x:Name="AIInfoCheckBox"
+                          Color="{x:Static local:Themes.ButtonTextC}"
+                          CheckedChanged="OnInfoCheckBoxChanged" />
+                <Label Text="AI Info"
+                       TextColor="{x:Static local:Themes.ButtonTextC}"
+                       VerticalTextAlignment="Center" />
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3">
+        <!-- Message Label -->
+        <Frame x:Name="MessageFrame"
+               Grid.Row="5" Grid.ColumnSpan="3"
+               BackgroundColor="Transparent"
+               BorderColor="Transparent"
+               HasShadow="False"
+               Padding="0"
+               CornerRadius="0"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="End"> <!-- Adjusted margin and VerticalOptions -->
+            <Label x:Name="MessageLabel"
+                   TextColor="{x:Static local:Themes.MessageLabelTextC}"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="End" 
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   Padding="10"/>
+        </Frame>
+        </StackLayout>
+    </Grid>
+</ContentPage>

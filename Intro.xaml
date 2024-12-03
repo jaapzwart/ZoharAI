@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ZoharBible"
+             x:Class="ZoharBible.Intro"
+             BackgroundColor="{x:Static local:Themes.PageBackgroundC}">
+       <ContentPage.BindingContext>
+              <local:MainViewModel />
+       </ContentPage.BindingContext>
+       <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <!-- Voeg een spacer toe voor wat ruimte tussen de items -->
+            <BoxView HeightRequest="20" BackgroundColor="{x:Static local:Themes.PageBackgroundC}" Grid.Row="0" />
+            <VerticalStackLayout Grid.Row="1">
+            <Button Text="Start App"
+                    BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                    TextColor="DarkBlue"
+                    BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                    BorderWidth="2"
+                    CornerRadius="20"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="200"
+                    Clicked="OnNavigateToStarterPageClicked"
+                    Grid.Row="1" />
+            <Button Text="Test Audio"
+                    BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                    TextColor="DarkBlue"
+                    BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                    BorderWidth="2"
+                    CornerRadius="20"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="200"
+                    Clicked="OnNavigateToTestAudioPageClicked"
+                    Grid.Row="1" />
+            
+            </VerticalStackLayout>
+            
+            <!-- Voeg een spacer toe voor wat ruimte tussen de knop en de checkbox -->
+            <BoxView HeightRequest="20" BackgroundColor="{x:Static local:Themes.PageBackgroundC}" Grid.Row="2" />
+            
+            <!-- Voeg een CheckBox toe -->
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         Grid.Row="3">
+                <Label Text="Standard Theme"
+                       TextColor="White"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+                <CheckBox x:Name="StandardThemeCheckBox"
+                          IsChecked="True"
+                          VerticalOptions="Center"
+                          HorizontalOptions="Center"
+                          CheckedChanged="OnStandardThemeCheckBoxCheckedChanged"/>
+                <Label Text="AI Dialogue"
+                       TextColor="White"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       Margin="20,0,0,0" />
+                <CheckBox x:Name="DialogueCheckBox"
+                          IsChecked="False"
+                          VerticalOptions="Center"
+                          HorizontalOptions="Center"
+                          CheckedChanged="DialogueCheckBox_CheckedChanged" />
+            </StackLayout>
+            
+            <!-- Voeg een spacer toe voor wat ruimte tussen de checkbox en de slider -->
+            <BoxView HeightRequest="20" BackgroundColor="{x:Static local:Themes.PageBackgroundC}" Grid.Row="4" />
+            
+            <!-- Titel voor de slider -->
+            <Label Text="Change theme"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Grid.Row="5" />
+            
+            <!-- Slider met schaal van 10 tot 100, stap 1, en initiële waarde van 80 -->
+            <Slider x:Name="ValueSlider"
+                    Minimum="10"
+                    Maximum="100"
+                    Value="80"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center"
+                    ValueChanged="OnSliderValueChanged"
+                    Grid.Row="6" />
+            
+            <!-- Label die de waarde van de slider aangeeft -->
+            <Label x:Name="SliderValueLabel"
+                   TextColor="Yellow"
+                   Text= "{Binding Source={x:Reference ValueSlider}, Path=Value, StringFormat='Slider Value: {0:F0}'}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Grid.Row="7" />
+            
+            <!-- Voeg een extra ruimte toe tussen de sliders -->
+            <BoxView HeightRequest="20" BackgroundColor="{x:Static local:Themes.PageBackgroundC}" Grid.Row="8" />
+            
+            <!-- Titel voor de nieuwe slider -->
+            <Grid Grid.Row="9">
+                <Label Text="ChatGPT Creativity"
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+                <Label Text="Strict"
+                       TextColor="White"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"/>
+                <Label Text="Less Strict"
+                       TextColor="White"
+                       HorizontalOptions="End"
+                       VerticalOptions="Center"/>
+            </Grid>
+            <!-- Nieuwe slider met schaal van 0.1 tot 1 -->
+            <Slider x:Name="CreativitySlider"
+                    Minimum="0.1"
+                    Maximum="1.0"
+                    Value="0.5"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center"
+                    ValueChanged="OnCreativitySliderValueChanged"
+                    Grid.Row="10" />
+            
+            <!-- Label die de waarde van de nieuwe slider aangeeft -->
+            <Label x:Name="CreativitySliderValueLabel"
+                   TextColor="Yellow"
+                   Text="{Binding Source={x:Reference CreativitySlider}, Path=Value, StringFormat='{0:F1}'}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Grid.Row="11" Margin="10,0,0,0"/>
+            <Label x:Name="MessageLabel"
+                   BackgroundColor="Transparent"
+                   Text="..."
+                   TextColor="White"
+                   Padding="10"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="End"
+                   Grid.Row="12" />
+           
+        </Grid>
+              
+    </ContentPage.Content>
+</ContentPage>

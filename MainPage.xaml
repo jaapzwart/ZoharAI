@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ZoharBible"
+             x:Class="ZoharBible.MainPage"
+             BackgroundColor="{x:Static local:Themes.PageBackgroundC}">
+    <Grid>
+        <!-- Invoertekstvak bovenaan met gele achtergrondkleur en donkerblauwe tekstkleur -->
+        <Entry x:Name="TopEntryBox"
+               Placeholder="Give text to analyze"
+               BackgroundColor="Yellow"
+               TextColor="DarkBlue"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="Start"
+               Margin="0, 0, 0, 10"
+               HeightRequest="40"
+               Focused="TopEntryBox_Focused" />
+
+        <!-- Analyze button direct onder het invoervak, horizontaal uitgelijnd -->
+        <StackLayout Orientation="Horizontal" 
+                     HorizontalOptions="Center" 
+                     VerticalOptions="Start"
+                     Margin="0, 50, 0, 10">
+            <Button x:Name="GetAnalysisButton"
+                    Text="Analyze given text"
+                    BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                    BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                    BorderWidth="2"
+                    TextColor="{x:Static local:Themes.ButtonTextC}"
+                    Padding="10"
+                    HeightRequest="50"
+                    WidthRequest="200"
+                    Clicked="OnGetAnalysisButtonClicked" />
+            <Button x:Name="ChabatButton"
+                    Text="Get Daily Study"
+                    BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                    BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                    BorderWidth="2"
+                    TextColor="{x:Static local:Themes.ButtonTextC}"
+                    Padding="10"
+                    HeightRequest="50"
+                    WidthRequest="200"
+                    Clicked="OnChabatButtonClicked" />
+        </StackLayout>
+
+        <!-- Nieuwe Horizontale StackLayout met de nieuwe knoppen onder de analyseknop -->
+        <StackLayout Orientation="Horizontal" 
+                     HorizontalOptions="Center" 
+                     VerticalOptions="Start"
+                     Margin="0, 120, 0, 0">
+            <Button x:Name="ShemaTimeButton"
+                    Text="Shema Time"
+                    BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                    BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                    BorderWidth="2"
+                    TextColor="{x:Static local:Themes.ButtonTextC}"
+                    Padding="10"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    WidthRequest="150"
+                    Clicked="OnShemaTimeButtonClicked" />
+            <Button x:Name="AmidaTimeButton"
+                    Text="Amida Time"
+                    BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                    BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                    BorderWidth="2"
+                    TextColor="{x:Static local:Themes.ButtonTextC}"
+                    Padding="10"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    WidthRequest="150"
+                    Clicked="OnAmidaTimeButtonClicked" />
+        </StackLayout>
+
+        <!-- Hauptinhalt -->
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+            <!-- Knoppen en Checkboxes -->
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Button x:Name="ProverbButton"
+                        Text="Get a random Proverb"
+                        BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                        BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                        BorderWidth="2"
+                        TextColor="{x:Static local:Themes.ButtonTextC}"
+                        Padding="10"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        Clicked="OnGetProverbButtonClicked" />
+                <Button x:Name="PsalmsButton"
+                        Text="Get a random Psalm"
+                        BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                        BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                        BorderWidth="2"
+                        TextColor="{x:Static local:Themes.ButtonTextC}"
+                        Padding="10"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        Clicked="OnGetPsalmsButtonClicked" />
+                <Button x:Name="AmidaButton"
+                        Text="Get the Amida"
+                        BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                        BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                        BorderWidth="2"
+                        TextColor="{x:Static local:Themes.ButtonTextC}"
+                        Padding="10"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        Clicked="OnGetAmidaButtonClicked" />
+                <Button x:Name="ShemaButton"
+                        Text="Get the Shema"
+                        BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                        BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                        BorderWidth="2"
+                        TextColor="{x:Static local:Themes.ButtonTextC}"
+                        Padding="10"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        Clicked="OnGetShemaButtonClicked" />
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             Spacing="10"
+                             Margin="0,0,0,10">
+                    <StackLayout Orientation="Horizontal" Spacing="2">
+                        <CheckBox x:Name="ChatGPTCheckBox"
+                                  Color="White"
+                                  CheckedChanged="OnChatbotCheckBoxChanged" />
+                        <Label Text="ChatGPT"
+                               TextColor="White"
+                               VerticalTextAlignment="Center" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="2">
+                        <CheckBox x:Name="GroKCheckBox"
+                                  Color="White"
+                                  IsChecked="True"
+                                  CheckedChanged="OnChatbotCheckBoxChanged" />
+                        <Label Text="GroK"
+                               TextColor="White"
+                               VerticalTextAlignment="Center" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="2">
+                        <CheckBox x:Name="GeminiCheckBox"
+                                  Color="White"
+                                  CheckedChanged="OnChatbotCheckBoxChanged" />
+                        <Label Text="Gemini"
+                               TextColor="White"
+                               VerticalTextAlignment="Center" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="2">
+                        <CheckBox x:Name="AllAICheckBox"
+                                  Color="White"
+                                  CheckedChanged="OnChatbotCheckBoxChanged" />
+                        <Label Text="AllAI"
+                               TextColor="White"
+                               VerticalTextAlignment="Center" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             Spacing="10">
+                    <Button x:Name="KabbalahButton"
+                            Text="Kabbalah"
+                            BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                            BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                            BorderWidth="2"
+                            TextColor="DarkBlue"
+                            Clicked="OnOptionButtonClicked" />
+                    <Button x:Name="ZoharButton"
+                            Text="Zohar"
+                            BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                            BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                            BorderWidth="2"
+                            TextColor="DarkBlue"
+                            Clicked="OnOptionButtonClicked" />
+                    <Button x:Name="MishnaButton"
+                            Text="Mishna"
+                            BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                            BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                            BorderWidth="2"
+                            TextColor="DarkBlue"
+                            Clicked="OnOptionButtonClicked" />
+                    <Button x:Name="AllButton"
+                            Text="All"
+                            BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                            BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                            BorderWidth="2"
+                            TextColor="DarkBlue"
+                            Clicked="OnOptionButtonClicked" />
+                    <Button x:Name="ResetButton"
+                            Text=""
+                            BackgroundColor="Green"
+                            BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                            BorderWidth="2"
+                            TextColor="White"
+                            WidthRequest="50"
+                            Clicked="OnResetButtonClicked" />
+                </StackLayout>
+            </StackLayout>
+        </VerticalStackLayout>
+
+        <!-- Berichtlabel onderaan -->
+        <Label x:Name="MessageLabel"
+               Text="..."
+               TextColor="{x:Static local:Themes.MessageLabelTextC}"
+               BackgroundColor="{x:Static local:Themes.MessageLabelBackgroundC}"
+               Padding="10"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="End" />
+        
+        <!-- Versie label in de rechterbovenhoek -->
+        <Label Text="Versie 1.1.0 - 11/05/2024 (US)"
+               BackgroundColor="Transparent"
+               TextColor="#FFFFFF"
+               FontAttributes="Bold"
+               TextDecorations="Underline"
+               VerticalOptions="End"
+               HorizontalOptions="End"
+               HorizontalTextAlignment="End"
+               FontSize="9"
+               Margin="0, 0, 10, 10"/>
+    </Grid>
+</ContentPage>

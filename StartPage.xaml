@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ZoharBible"
+             x:Class="ZoharBible.StartPage"
+             xmlns:viewModels="clr-namespace:ZoharBible"
+             BackgroundColor="{x:Static local:Themes.PageBackgroundC}"
+             >
+    <ContentPage.BindingContext>
+        <viewModels:ViewModelLanguageChanged />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:LanguageToMicrosoftVoiceConverter x:Key="LanguageToVoiceConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <!-- Knop voor navigatie naar de MainPage -->
+            <StackLayout Spacing="20"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center">
+                <Button Text="Start Zohar Bible"
+                        BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                        TextColor="{x:Static local:Themes.ButtonTextC}"
+                        BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                        BorderWidth="2"
+                        CornerRadius="20"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="200"
+                        Clicked="OnNavigateToMainPageClicked" />
+                
+                <Button Text="Start Horoscope"
+                        BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                        TextColor="{x:Static local:Themes.ButtonTextC}"
+                        BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                        BorderWidth="2"
+                        CornerRadius="20"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="200"
+                        Clicked="OnNavigateToHoroPageClicked" />
+                
+                <Button Text="Start Tarot"
+                        BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                        TextColor="{x:Static local:Themes.ButtonTextC}"
+                        BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                        BorderWidth="2"
+                        CornerRadius="20"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="200"
+                        Clicked="OnNavigateToTarotPageClicked" />
+                
+                <Button Text="Hey Computer"
+                        BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
+                        TextColor="DarkBlue"
+                        BorderColor="{x:Static local:Themes.ButtonBorderC}"
+                        BorderWidth="2"
+                        CornerRadius="20"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="200"
+                        Clicked="OnNavigateToHeyComputerPageClicked"
+                        Grid.Row="1" />
+            </StackLayout>
+            <!-- Toevoegen van lege ruimte -->
+            <BoxView HeightRequest="80" Color="{x:Static local:Themes.PageBackgroundC}" />
+            <StackLayout Padding="20">
+               <Label Text="{Binding SelectedLanguage, Converter={StaticResource LanguageToVoiceConverter}}"
+                      FontSize="Medium"
+                      TextColor="{x:Static local:Themes.ButtonTextC}"
+                      HorizontalOptions="Center"
+                      x:Name="LanguageByName" />
+            <!-- Picker voor taalkeuze -->
+            <Picker x:Name="LanguagePicker"
+                    Title="Select Language"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    BackgroundColor="LightBlue"
+                    TextColor="DarkBlue"
+                    WidthRequest="150"
+                    SelectedIndexChanged="OnLanguagePickerChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <!-- Taalopties -->
+                        <x:String>af</x:String> <!-- Afrikaans -->
+                        <x:String>ar</x:String> <!-- Arabic -->
+                        <x:String>bn</x:String> <!-- Bengali -->
+                        <x:String>bg</x:String> <!-- Bulgarian -->
+                        <x:String>zh-Hans</x:String> <!-- Chinese Simplified -->
+                        <x:String>zh-Hant</x:String> <!-- Chinese Traditional -->
+                        <x:String>hr</x:String> <!-- Croatian -->
+                        <x:String>cs</x:String> <!-- Czech -->
+                        <x:String>da</x:String> <!-- Danish -->
+                        <x:String>nl</x:String> <!-- Dutch -->
+                        <x:String>en</x:String> <!-- English -->
+                        <x:String>fi</x:String> <!-- Finnish -->
+                        <x:String>fr</x:String> <!-- French -->
+                        <x:String>de</x:String> <!-- German -->
+                        <x:String>el</x:String> <!-- Greek -->
+                        <x:String>he</x:String> <!-- Hebrew -->
+                        <x:String>hi</x:String> <!-- Hindi -->
+                        <x:String>hu</x:String> <!-- Hungarian -->
+                        <x:String>id</x:String> <!-- Indonesian -->
+                        <x:String>it</x:String> <!-- Italian -->
+                        <x:String>ja</x:String> <!-- Japanese -->
+                        <x:String>ko</x:String> <!-- Korean -->
+                        <x:String>ms</x:String> <!-- Malay -->
+                        <x:String>fa</x:String> <!-- Persian -->
+                        <x:String>pl</x:String> <!-- Polish -->
+                        <x:String>pt</x:String> <!-- Portuguese -->
+                        <x:String>pa</x:String> <!-- Punjabi -->
+                        <x:String>ro</x:String> <!-- Romanian -->
+                        <x:String>ru</x:String> <!-- Russian -->
+                        <x:String>sr</x:String> <!-- Serbian -->
+                        <x:String>sk</x:String> <!-- Slovak -->
+                        <x:String>es</x:String> <!-- Spanish -->
+                        <x:String>sv</x:String> <!-- Swedish -->
+                        <x:String>ta</x:String> <!-- Tamil -->
+                        <x:String>th</x:String> <!-- Thai -->
+                        <x:String>tr</x:String> <!-- Turkish -->
+                        <x:String>uk</x:String> <!-- Ukrainian -->
+                        <x:String>ur</x:String> <!-- Urdu -->
+                        <x:String>vi</x:String> <!-- Vietnamese -->
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            </StackLayout>
+            <!-- Toevoegen van lege ruimte -->
+            <BoxView HeightRequest="20" Color="{x:Static local:Themes.PageBackgroundC}" />
+            <!-- Slider voor spraaksnelheid -->
+            <Label Text="Speech Speed" 
+                   TextColor="Gold" 
+                   HorizontalOptions="Center" 
+                   VerticalOptions="End" />
+            <Slider x:Name="SpeechSpeedSlider"
+                    Minimum="10"
+                    Maximum="100"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="End"
+                    ValueChanged="OnSpeechSpeedSliderValueChanged"/>
+            
+            <!-- Label om de huidige waarde van de slider weer te geven -->
+            <Label x:Name="SpeechSpeedValueLabel"
+                   TextColor="Gold"
+                   BackgroundColor="Transparent"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   VerticalOptions="End" />
+        </VerticalStackLayout>
+        <Label x:Name="MessageLabel"
+               BackgroundColor="{x:Static local:Themes.MessageLabelBackgroundC}"
+               Text="..."
+               TextColor="{x:Static local:Themes.MessageLabelTextC}"
+               Padding="10"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="End" />
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     Spacing="10"
+                     Margin="0,0,0,10">
+            <StackLayout Orientation="Horizontal" Spacing="2">
+                <CheckBox x:Name="ChatGPTCheckBox"
+                          Color="White"
+                          CheckedChanged="OnChatbotCheckBoxChanged" />
+                <Label Text="ChatGPT"
+                       TextColor="White"
+                       VerticalTextAlignment="Center" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+                <CheckBox x:Name="GroKCheckBox"
+                          Color="White"
+                          IsChecked="True"
+                          CheckedChanged="OnChatbotCheckBoxChanged" />
+                <Label Text="GroK"
+                       TextColor="White"
+                       VerticalTextAlignment="Center" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+                <CheckBox x:Name="GeminiCheckBox"
+                          Color="White"
+                          CheckedChanged="OnChatbotCheckBoxChanged" />
+                <Label Text="Gemini"
+                       TextColor="White"
+                       VerticalTextAlignment="Center" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+                <CheckBox x:Name="AllAICheckBox"
+                          Color="White"
+                          CheckedChanged="OnChatbotCheckBoxChanged" />
+                <Label Text="AllAI"
+                       TextColor="White"
+                       VerticalTextAlignment="Center" />
+            </StackLayout>
+        </StackLayout>
+    </Grid>
+</ContentPage>
