@@ -56,7 +56,7 @@
                 
                 <Button Text="Hey Computer"
                         BackgroundColor="{x:Static local:Themes.ButtonBackgroundC}"
-                        TextColor="DarkBlue"
+                        TextColor="{x:Static local:Themes.ButtonTextC}"
                         BorderColor="{x:Static local:Themes.ButtonBorderC}"
                         BorderWidth="2"
                         CornerRadius="20"

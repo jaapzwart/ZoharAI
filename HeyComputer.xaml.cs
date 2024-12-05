@@ -1,4 +1,5 @@
 using System.Text.Json;
+using PassKit;
 
 namespace ZoharBible
 {
@@ -154,7 +155,7 @@ namespace ZoharBible
         /// Sets the image source based on the transcribed text, potentially triggering video creation for specific keywords.
         /// </summary>
         /// <param name="imageReturn">The text returned from speech recognition which might contain keywords for image generation.</param>
-        private void SetImageSource(string imageReturn)
+        private async void SetImageSource(string imageReturn)
         {
             if (imageReturn.Contains("Talked Bill"))
             {
@@ -162,15 +163,21 @@ namespace ZoharBible
                 GlobalVars.videoTalked = "Bill";
                 if (GlobalVars.AIInteractive)
                 {
-                    GlobalVars.videoTalked = "Bill";
-                    OnCreateVideoClipClicked(null, EventArgs.Empty);
-                    GlobalVars.videoTalked = "Interactive";
+                    GlobalVars.videoTalked = "InteractiveStart";
+                    GlobalVars.anim = true;
+                    await CreateVideoClipClicked();
+                    GlobalVars.anim = false;
                     GlobalVars.videoTalkedText = GlobalVars.AIInteractiveText;
+                    GlobalVars.videoTalked = "Interactive";
+                    await CreateVideoClipClicked();
                 }
                 else
+                {
                     GlobalVars.videoTalkedText = "This is the return from Bill Gates";
-                
-                OnCreateVideoClipClicked(null, EventArgs.Empty);
+                    await CreateVideoClipClicked();
+                }
+
+
             }
 
             if (imageReturn.Contains("Talked Elon"))
@@ -179,16 +186,19 @@ namespace ZoharBible
                 GlobalVars.videoTalked = "Elon";
                 if (GlobalVars.AIInteractive)
                 {
+                    GlobalVars.videoTalked = "InteractiveStart";
                     GlobalVars.anim = true;
-                    GlobalVars.videoTalked = "Elon";
-                    OnCreateVideoClipClicked(null, EventArgs.Empty);
+                    await CreateVideoClipClicked();
                     GlobalVars.anim = false;
-                    GlobalVars.videoTalked = "Interactive";
                     GlobalVars.videoTalkedText = GlobalVars.AIInteractiveText;
+                    GlobalVars.videoTalked = "Interactive";
+                    await CreateVideoClipClicked();
                 }
                 else
+                {
                     GlobalVars.videoTalkedText = "This is the return from Elon Musk";
-                OnCreateVideoClipClicked(null, EventArgs.Empty);
+                    await CreateVideoClipClicked();
+                }
             }
 
             if (imageReturn.Contains("Talked Gemini"))
@@ -197,16 +207,19 @@ namespace ZoharBible
                 GlobalVars.videoTalked = "Google";
                 if (GlobalVars.AIInteractive)
                 {
+                    GlobalVars.videoTalked = "InteractiveStart";
                     GlobalVars.anim = true;
-                    GlobalVars.videoTalked = "Google";
-                    OnCreateVideoClipClicked(null, EventArgs.Empty);
+                    await CreateVideoClipClicked();
                     GlobalVars.anim = false;
-                    GlobalVars.videoTalked = "Interactive";
                     GlobalVars.videoTalkedText = GlobalVars.AIInteractiveText;
+                    GlobalVars.videoTalked = "Interactive";
+                    await CreateVideoClipClicked();
                 }
                 else
+                {
                     GlobalVars.videoTalkedText = "This is the return from Google";
-                OnCreateVideoClipClicked(null, EventArgs.Empty);
+                    await CreateVideoClipClicked();
+                }
             }
         }
 
@@ -284,6 +297,10 @@ namespace ZoharBible
         /// <param name="e">Event arguments.</param>
         private async void OnCreateVideoClipClicked(object? sender, EventArgs e)
         {
+            await CreateVideoClipClicked();
+        }
+        private async Task CreateVideoClipClicked()
+        {
             try
             {
                 this.VideoPlayer.IsVisible = true;
@@ -296,7 +313,16 @@ namespace ZoharBible
 
                 if (GlobalVars.videoFileExists)
                 {
-                    await PlayVideosInSequenceAsync();
+                    if(GlobalVars.videoTalked.Contains("InteractiveStart"))
+                        VideoPlayer.Source = await DoVideoClipLipSync.PlayExistingVideo("loading.mp4");
+                    else if (GlobalVars.videoTalked.Contains("Interactive"))
+                    {
+                        theVideo = await DoVideoClipLipSync.CreateClipAvatar(GlobalVars.videoTalkedText);
+                        string urll = await DoVideoClipLipSync.GetVideoClip(theVideo);
+                        await LoadAndPlayVideo(urll);
+                    }
+                    else
+                        await PlayVideosInSequenceAsync();
                 }
                 else
                 {
@@ -310,6 +336,7 @@ namespace ZoharBible
                 await DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
             }
         }
+
 
         /// <summary>
         /// Plays two videos in sequence, used when a video file already exists.
@@ -331,9 +358,8 @@ namespace ZoharBible
         private async void OnFirstVideoEnded(object sender, EventArgs e)
         {
             VideoPlayer.MediaEnded -= OnFirstVideoEnded;
-
             await DoVideoClipLipSync.CreateAnimationAvatar(GlobalVars.videoTalkedText);
-
+            GlobalVars.videoFilePath = "TalkedAnimation.mp4";
             // Start the second video
             var localFilePath = await DoVideoClipLipSync.PlayExistingVideo(GlobalVars.videoFilePath);
             VideoPlayer.Source = localFilePath;
@@ -373,7 +399,7 @@ namespace ZoharBible
             {
                 string localFilePath = await DoVideoClipLipSync.DownloadVideoAsync(vidUrl);
                 VideoPlayer.Source = localFilePath;
-                
+ 
             }
             catch (Exception ex)
             {

@@ -28,7 +28,15 @@ public static class DoVideoClipLipSync
         if(GlobalVars.videoTalked.Contains("Interactive")) fileName = "TalkedInteractive.mp4";
         
         string filePath = Path.Combine(FileSystem.CacheDirectory, fileName);
-
+        
+        if (GlobalVars.waitingLoopScreenDo)
+        {
+            GlobalVars.videoFileExists = true;
+            GlobalVars.videoTalked = "waiting";
+            GlobalVars.videoFilePath = Path.Combine(FileSystem.AppDataDirectory, GlobalVars.waitingLoopScreen);
+            return "Found";
+        }
+        
         // Check if the video file already exists, unless it's an interactive clip
         if (!fileName.Contains("TalkedInteractive") && File.Exists(filePath))
         {
@@ -64,9 +72,17 @@ public static class DoVideoClipLipSync
     public static async Task<string> CreateAnimationAvatar(string whatToSay)
     {
         string fileName = "";
-        if (GlobalVars.videoTalked.Contains("Bill") || GlobalVars.videoTalked.Contains("Elon") || GlobalVars.videoTalked.Contains("Google"))
-            fileName = "TalkedAnimation.mp4";
+        if (GlobalVars.videoTalked.Contains("Bill")
+            || GlobalVars.videoTalked.Contains("Elon")
+            || GlobalVars.videoTalked.Contains("Google"))
+        {
+            fileName = "TalkedAnimated.mp4";
+        }
+        else
+            fileName = "loading.mp4";
         
+        
+
         string filePath = Path.Combine(FileSystem.CacheDirectory, fileName);
 
         // Check if animation already exists
@@ -147,7 +163,8 @@ public static class DoVideoClipLipSync
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message + ":" + e.StackTrace);
+            Console.WriteLine("Error in loop creating video:" + '\n' +
+                              e.Message + '\n' + e.StackTrace);
             throw;
         }
     }
@@ -211,8 +228,9 @@ public static class DoVideoClipLipSync
     public static async Task<string> PlayExistingVideo(string _Video)
     {
         string fileName = _Video;
-        string filePath = Path.Combine(FileSystem.CacheDirectory, fileName);
-
+        string filePath = "";
+        var l = FileSystem.CacheDirectory.Length;
+        filePath = Path.Combine(FileSystem.CacheDirectory, fileName);
         return filePath;
     }
 }

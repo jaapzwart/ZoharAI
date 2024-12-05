@@ -24,6 +24,66 @@
 		<data>
 		eVULSUoQCcxngDFeS+bafl5ehNM=
 		</data>
+		<key>Google.Api.CommonProtos.dll</key>
+		<data>
+		fBe3iFGbNcPL/n26Ega7VYOXMIo=
+		</data>
+		<key>Google.Api.Gax.Grpc.dll</key>
+		<data>
+		ZAdOKKgAFrxMJMUFYNC5nmf1pR4=
+		</data>
+		<key>Google.Api.Gax.dll</key>
+		<data>
+		7rE4sEqcZDmHQnw4Em0j4CWIyMY=
+		</data>
+		<key>Google.Apis.Auth.dll</key>
+		<data>
+		GDHw96KiFyNmAwZcqyiK9PhYa6A=
+		</data>
+		<key>Google.Apis.Core.dll</key>
+		<data>
+		odWUfZr3KbNb2OIbbhn5QjCoLy4=
+		</data>
+		<key>Google.Apis.dll</key>
+		<data>
+		p5RSTYU0DyJ/NN3nVlJQgwwuV3E=
+		</data>
+		<key>Google.Cloud.AIPlatform.V1.dll</key>
+		<data>
+		v10szwr4sTBXCOgZ4bg4HrjWO2U=
+		</data>
+		<key>Google.Cloud.Iam.V1.dll</key>
+		<data>
+		WPX0l+w1tgA2gzAWha6Ih+B0NY8=
+		</data>
+		<key>Google.Cloud.Location.dll</key>
+		<data>
+		01QACDHB60wLTQtilX+Az8CVxc0=
+		</data>
+		<key>Google.LongRunning.dll</key>
+		<data>
+		hoLWebvMeglOAyf4EgrHHii5tfA=
+		</data>
+		<key>Google.Protobuf.dll</key>
+		<data>
+		+/DnXy1ZFUxCW27hN/3j+SQX2ow=
+		</data>
+		<key>Grpc.Auth.dll</key>
+		<data>
+		r8i5HQXW7hBD3lPCyA1O7xYelE0=
+		</data>
+		<key>Grpc.Core.Api.dll</key>
+		<data>
+		uvHLDo48IZBA5Aeqeo1Usf2LTHg=
+		</data>
+		<key>Grpc.Net.Client.dll</key>
+		<data>
+		oFnyKK3oJYtYPwLkHQ2be4+2JIg=
+		</data>
+		<key>Grpc.Net.Common.dll</key>
+		<data>
+		k3zz8ciK+H7i8jj2/dCwshlXtVo=
+		</data>
 		<key>Info.plist</key>
 		<data>
 		8eAUOiFQ1/feHeFeoRWq9Xf6eZU=
@@ -304,6 +364,10 @@
 		<data>
 		R2ipvnehpiFs4Dh/ZEUDbGZOqZQ=
 		</data>
+		<key>System.CodeDom.dll</key>
+		<data>
+		zFNKvlD5CFfFKJpPf6VLfB1rVkY=
+		</data>
 		<key>System.Collections.Concurrent.dll</key>
 		<data>
 		ec6yE4D/WUhoImkCv3EyMQKXz00=
@@ -519,6 +583,10 @@
 		<key>System.Linq.dll</key>
 		<data>
 		q/IBnmX+bpItsIOZXpcV/d7pRFI=
+		</data>
+		<key>System.Management.dll</key>
+		<data>
+		+O4BK7sp4RrgqBZqNKcV3++4iQU=
 		</data>
 		<key>System.Memory.Data.dll</key>
 		<data>
@@ -944,21 +1012,25 @@
 		<data>
 		c5PW3MQNZch0Be0jVWCYESV8R2A=
 		</data>
+		<key>TalkedAnimated.mp4</key>
+		<data>
+		k7IT0EjVfOguDDRRpBbzc/B9ySE=
+		</data>
 		<key>WindowsBase.dll</key>
 		<data>
 		hWAe7kTpXKIf6AjVM2C6dWgdm3Q=
 		</data>
 		<key>ZoharBible.dll</key>
 		<data>
-		KLyxKV65rzdo85UG1mNv+fSPquA=
+		3ORseb+YPqWvQuatNtgr/+QLZMk=
 		</data>
 		<key>ZoharBible.pdb</key>
 		<data>
-		ua9wsMMh0nDrIcB1exbwnCcT+Mk=
+		aKguCGhZG6SZWWyNqbk/Kn603VY=
 		</data>
 		<key>aot-instances.aotdata.arm64</key>
 		<data>
-		L/pbZ2NCUyNYHSnCJsmLHh5Mb0k=
+		QhMrEzBx7wzQIiPMjqOMoVH84xA=
 		</data>
 		<key>appicon60x60@2x.png</key>
 		<data>
@@ -1071,6 +1143,10 @@
 		<key>ko/Microsoft.Maui.Controls.resources.dll</key>
 		<data>
 		NSJBPluBd5crkqo3xRyEswpgxgw=
+		</data>
+		<key>loading.mp4</key>
+		<data>
+		cTayKoU84IajDWWweRYoI1veDbk=
 		</data>
 		<key>ms/Microsoft.Maui.Controls.resources.dll</key>
 		<data>
@@ -1336,6 +1412,111 @@
 			<key>hash2</key>
 			<data>
 			gm2LEByKYmCMd/iwhBRSAFTDtVHDH45JKA9o765RRPY=
+			</data>
+		</dict>
+		<key>Google.Api.CommonProtos.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			H+eSxkzq5oCMYmoiaUiMkP2/bJ5/A/dnvhzPzj8XUp4=
+			</data>
+		</dict>
+		<key>Google.Api.Gax.Grpc.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			vLDIptqZAnnSBQ0s+toGmkg4//Da7KFnvFaTZxvUXEY=
+			</data>
+		</dict>
+		<key>Google.Api.Gax.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			0qMwQ1M8p+sTRA+HgcfSBCnhm0PHKNTig0aRCSkiRxI=
+			</data>
+		</dict>
+		<key>Google.Apis.Auth.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			G24C65muzwkuEpP8+RHUf3xZD2ujfhP+Qy2JeGr0DYM=
+			</data>
+		</dict>
+		<key>Google.Apis.Core.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			dNE25N1A2gUvbHD9Rd2JVaRCjbGL/GzfeIFSVCoiUHU=
+			</data>
+		</dict>
+		<key>Google.Apis.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Qzj1baTY8jJw4+Ib7WyVJD7nXlXg+KQqtRD3pJGbV1k=
+			</data>
+		</dict>
+		<key>Google.Cloud.AIPlatform.V1.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			1YV7O+OHQzFCShvxtQaMAYbw1O172tfSKizKnBSpQ8w=
+			</data>
+		</dict>
+		<key>Google.Cloud.Iam.V1.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			OrdsGvtYulg/89P3WwBNLgmTZbiqbCv/320UZwLDgRw=
+			</data>
+		</dict>
+		<key>Google.Cloud.Location.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			m7JYtB0ECmBG7uqi+X3G0VbPyo/ShoK/uLbfTPmGxIc=
+			</data>
+		</dict>
+		<key>Google.LongRunning.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			jKNzQ6cTvHmlEDzYGUqN4GCDC6QC9FRwzvyxe6W0ccE=
+			</data>
+		</dict>
+		<key>Google.Protobuf.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			lAaEK6Pl7c5bGgq/sm9tkaqim9Tr2wC4vMa016McVUU=
+			</data>
+		</dict>
+		<key>Grpc.Auth.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			8nsGqzPbfa7D4PLW9dh7H9yR+i5FgysdER4MLP6Rhbg=
+			</data>
+		</dict>
+		<key>Grpc.Core.Api.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			q9Y1s0r5jpKX2K4kf2EdQwqADxNUHXsOuKX54WSmxDs=
+			</data>
+		</dict>
+		<key>Grpc.Net.Client.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			VScmGorhCnBXR6jlfClw/wGrdhSwGG+iLZ6gp+Sy1WY=
+			</data>
+		</dict>
+		<key>Grpc.Net.Common.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			2EDijbMiut6fGj8x9flB//MOJwrWorUjtbGdWHDA/X4=
 			</data>
 		</dict>
 		<key>MauiInfo.plist</key>
@@ -1814,6 +1995,13 @@
 			SXWXDmLZ9llIYIC0lJxp8DpjjbVFvagG30teoTN+t1E=
 			</data>
 		</dict>
+		<key>System.CodeDom.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			TTPimGqE1EYIU+K5jTobqfiqKVD3+hL/atLhWkvM/Rg=
+			</data>
+		</dict>
 		<key>System.Collections.Concurrent.dll</key>
 		<dict>
 			<key>hash2</key>
@@ -2190,6 +2378,13 @@
 			<key>hash2</key>
 			<data>
 			7xfQuMVwHgIoN4Ug+FbDWi2IQExEdR4JwSGywMHd4tM=
+			</data>
+		</dict>
+		<key>System.Management.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			NgVrJA9Ii32mNyBYXYT5MYPPe9Bdpo1TQBUevdheTYg=
 			</data>
 		</dict>
 		<key>System.Memory.Data.dll</key>
@@ -2934,6 +3129,13 @@
 			FBAujTydbee46h1OKh4f/tjShwBOG1nqeAs1iGurs/0=
 			</data>
 		</dict>
+		<key>TalkedAnimated.mp4</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			5GjHPd5U6u9DzduF8Hx53+Wn42fDDn8NZw1aRNl9Ymk=
+			</data>
+		</dict>
 		<key>WindowsBase.dll</key>
 		<dict>
 			<key>hash2</key>
@@ -2945,21 +3147,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			F6+/FtBRGtpNj1/MhhZe7Qai/OhlVYsMUhbVt+IdNr0=
+			9f/OXNa4X4J2IkdAEITcuA8+52X6QtZXI9DKstiTR4U=
 			</data>
 		</dict>
 		<key>ZoharBible.pdb</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RGAhnos5dWUVCZIlyOHmrNKxDshLAScaht/ytflns9U=
+			VUoChWpPsQ4WWIfsJC+wNS2ZbFwBEFZitr5HmRfjsNo=
 			</data>
 		</dict>
 		<key>aot-instances.aotdata.arm64</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			BaaPWY0fphojEPN2Bnh6VABdQtjR/fe13x2qp4WaoqA=
+			C3wHJygorXn5pLxxFQAJyP5pOm69wsonH2Q0jOyp6m4=
 			</data>
 		</dict>
 		<key>appicon60x60@2x.png</key>
@@ -3156,6 +3358,13 @@
 			<key>hash2</key>
 			<data>
 			BSIX9iMiidpSFvZFjNaOWEMQeSBvBrYBEBRdj/aC9GE=
+			</data>
+		</dict>
+		<key>loading.mp4</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			fdCTqbrELSkZSKitabbffzQwIDkvERorG1ldrTftVQg=
 			</data>
 		</dict>
 		<key>ms/Microsoft.Maui.Controls.resources.dll</key>

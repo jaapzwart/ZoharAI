@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Volumes/TT7/Projects/RiderProjects/ZoharBibleFull/ZoharBible.csproj": {}
+    "/Volumes/TT7/Projects/RiderProjects/ZoharAI/ZoharBible.csproj": {}
   },
   "projects": {
-    "/Volumes/TT7/Projects/RiderProjects/ZoharBibleFull/ZoharBible.csproj": {
+    "/Volumes/TT7/Projects/RiderProjects/ZoharAI/ZoharBible.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Volumes/TT7/Projects/RiderProjects/ZoharBibleFull/ZoharBible.csproj",
+        "projectUniqueName": "/Volumes/TT7/Projects/RiderProjects/ZoharAI/ZoharBible.csproj",
         "projectName": "ZoharBible",
-        "projectPath": "/Volumes/TT7/Projects/RiderProjects/ZoharBibleFull/ZoharBible.csproj",
+        "projectPath": "/Volumes/TT7/Projects/RiderProjects/ZoharAI/ZoharBible.csproj",
         "packagesPath": "/Users/jaapzwart/.nuget/packages/",
-        "outputPath": "/Volumes/TT7/Projects/RiderProjects/ZoharBibleFull/obj/",
+        "outputPath": "/Volumes/TT7/Projects/RiderProjects/ZoharAI/obj/",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "configFilePaths": [
@@ -23,6 +23,7 @@
           "net8.0-maccatalyst"
         ],
         "sources": {
+          "/Users/jaapzwart/.dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -61,6 +62,14 @@
             "CommunityToolkit.Maui.MediaElement": {
               "target": "Package",
               "version": "[4.1.2, )"
+            },
+            "Google.Apis.Auth": {
+              "target": "Package",
+              "version": "[1.68.0, )"
+            },
+            "Google.Cloud.AIPlatform.V1": {
+              "target": "Package",
+              "version": "[3.11.0, )"
             },
             "Microsoft.AspNetCore.Mvc.Core": {
               "target": "Package",
@@ -145,6 +154,14 @@
               "target": "Package",
               "version": "[4.1.2, )"
             },
+            "Google.Apis.Auth": {
+              "target": "Package",
+              "version": "[1.68.0, )"
+            },
+            "Google.Cloud.AIPlatform.V1": {
+              "target": "Package",
+              "version": "[3.11.0, )"
+            },
             "Microsoft.AspNetCore.Mvc.Core": {
               "target": "Package",
               "version": "[2.2.5, )"
@@ -228,6 +245,14 @@
               "target": "Package",
               "version": "[4.1.2, )"
             },
+            "Google.Apis.Auth": {
+              "target": "Package",
+              "version": "[1.68.0, )"
+            },
+            "Google.Cloud.AIPlatform.V1": {
+              "target": "Package",
+              "version": "[3.11.0, )"
+            },
             "Microsoft.AspNetCore.Mvc.Core": {
               "target": "Package",
               "version": "[2.2.5, )"
@@ -303,22 +328,7 @@
         }
       },
       "runtimes": {
-        "android-arm": {
-          "#import": []
-        },
-        "android-arm64": {
-          "#import": []
-        },
-        "android-x64": {
-          "#import": []
-        },
-        "android-x86": {
-          "#import": []
-        },
-        "iossimulator-arm64": {
-          "#import": []
-        },
-        "maccatalyst-arm64": {
+        "ios-arm64": {
           "#import": []
         }
       }

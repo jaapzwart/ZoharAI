@@ -66,7 +66,7 @@ namespace ZoharBible
                         await GlobalVars.ttsService.ConvertTextToSpeechAsync(dSentiment);
 
                         // Fetch additional information from a custom API or service.
-                        dSentiment = await Secrets.GetGrok(result.Text);
+                        dSentiment = await AIProviderReturns.GetGrok(result.Text);
 
                         // Clean and process the result text.
                         string cleanedText = GlobalVars.DialogueCleaner(dSentiment);

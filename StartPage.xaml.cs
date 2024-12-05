@@ -58,6 +58,9 @@ public partial class StartPage : ContentPage
     /// <param name="e">Event arguments.</param>
     private async void OnNavigateToHeyComputerPageClicked(object sender, EventArgs e)
     {
+        await GlobalVars.CopyFileToCacheAsync("loading.mp4");
+        await GlobalVars.CopyFileToCacheAsync("TalkedAnimated.mp4");
+        
         GlobalVars.HeyComputerStartTalk = true;
         GlobalVars.LanguageChoosenByFullName = this.LanguageByName.Text;
         await GlobalVars.SetClickedColor(sender);

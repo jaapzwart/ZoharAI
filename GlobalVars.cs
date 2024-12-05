@@ -19,6 +19,10 @@ public static class GlobalVars
         set;
     } = "";
 
+    public static string waitingLoopScreen { get; set; } = "loading.mp4";
+    public static bool waitingLoopScreenDo { get; set; } = false;
+    public static bool PlayLoopVideo { get; set; } = false;
+    
     public static string LanguageChoosenByFullName { get; set; } = "en-US-JennyNeural";
     
     public static bool AIInteractive { get; set; } = false;
@@ -140,6 +144,38 @@ public static class GlobalVars
         string repeatedString = new string(character, repeatCount);
         return repeatedString;
     }
+
+    public static async Task CopyFileToCacheAsync(string fileName)
+    {
+        try
+        {
+            // Pad naar het bestand in de app-pakketdirectory
+            string appData = Microsoft.Maui.Storage.FileSystem.Current.AppDataDirectory;
+            bool checkFile = await Microsoft.Maui.Storage.FileSystem.Current.AppPackageFileExistsAsync(fileName);
+            var sourcePath = Path.Combine(Microsoft.Maui.Storage.FileSystem.Current.AppDataDirectory, fileName);
+
+            // Pad naar de cache-directory
+            var cacheDirectory = FileSystem.Current.CacheDirectory;
+
+            // Bestemming van het bestand in de cache-directory
+            var destinationPath = Path.Combine(cacheDirectory, fileName);
+
+            // Bestand kopiëren
+            using var sourceStream = await Microsoft.Maui.Storage.FileSystem.Current.OpenAppPackageFileAsync(fileName);
+            using var destinationStream = File.Create(destinationPath);
+            await sourceStream.CopyToAsync(destinationStream);
+            
+            string filePath = Path.Combine(cacheDirectory, fileName);
+
+            bool fE =  File.Exists(filePath);
+            Console.WriteLine($"File copied to cache: {destinationPath}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error copying file: {ex.Message}");
+        }
+    }
+
     public static string DialogueCleaner(string _dialogue)
     {
         _dialogue = _dialogue.Replace(":", " ").Replace("(", " ").Replace(")", " ")
