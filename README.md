@@ -18,11 +18,11 @@
   * ...where still the main door is the MAUI app.
   * ...showing the huge possibilities and the ease of using it
 
-# Background and LinkedIn
+## Background and LinkedIn
 
 AI finally has a face in MAUI
 
-# This post is showing you AI with a face.
+## This post is showing you AI with a face.
 https://lnkd.in/eQ7Gukz3
 
 Previous posts on this subject in sequence
