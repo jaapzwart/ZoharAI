@@ -18,6 +18,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            
             <StackLayout Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="20">
                 <Button x:Name="BlinkingButton"
                         Text="Talk to Me"
@@ -35,16 +36,17 @@
                        BackgroundColor="Transparent"
                        FontSize="Large"/>
             </StackLayout>
+            
             <Label Grid.Row="1" x:Name="VoiceLabel" Text="..." 
                    FontSize="Medium" HorizontalOptions="Center" 
                    TextColor="{x:Static local:Themes.MessageLabelTextC}"
                    BackgroundColor="Transparent" />
+            
             <Label Grid.Row="3" x:Name="StatusLabel" Text="Press button to start recording." 
                    TextColor="{x:Static local:Themes.MessageLabelTextC}"
                    BackgroundColor="Transparent"
                    FontSize="Medium" HorizontalOptions="Center" />
-
-            <!-- New Button in right bottom corner -->
+            
             <Button Text="Stop speech"
                     BackgroundColor="Red"
                     TextColor="White"
@@ -55,6 +57,7 @@
                     VerticalOptions="End"
                     Margin="10"
                     Clicked="OnStopSpeakClicked" />
+            
             <ContentPage.BindingContext>
                 <local:MainViewModelChatGPT />
             </ContentPage.BindingContext>
@@ -66,6 +69,7 @@
                 Y2="10"
                 Stroke="yellow"
                 StrokeThickness="3" />
+            
             <StackLayout Grid.Row="6">
                 <toolkit:MediaElement 
                     x:Name="VideoPlayer"
@@ -74,9 +78,9 @@
                     WidthRequest="200"
                     Width="200"
                     Height="200"
-                    IsVisible="False"
-                />
+                    IsVisible="False" />
             </StackLayout>
+            
             <Line Grid.Row="7"
                   X1="0" 
                   Y1="0"
@@ -84,40 +88,108 @@
                   Y2="0"
                   Stroke="yellow"
                   StrokeThickness="3" />
+            
             <VerticalStackLayout Grid.Row="8" Padding="20" Spacing="20">
-                <!-- Image Display -->
+                <!-- Huidige Checkboxes -->
+                <HorizontalStackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="Center">
+                    <!-- D-ID Checkbox -->
+                    <HorizontalStackLayout Spacing="10">
+                        <CheckBox x:Name="CheckboxDID"
+                                  VerticalOptions="Center" 
+                                  Color="{x:Static local:Themes.ButtonTextC}" 
+                                  IsChecked="False"
+                                  CheckedChanged="OnDIDCheckedChanged"/>
+                        <Label Text="D-ID" 
+                               VerticalOptions="Center"
+                               TextColor="{x:Static local:Themes.MessageLabelTextC}"/>
+                    </HorizontalStackLayout>
+                    
+                    <!-- AIInteractive Checkbox -->
+                    <HorizontalStackLayout Spacing="10">
+                        <CheckBox VerticalOptions="Center" 
+                                  x:Name="CheckboxAIInteractive"
+                                  Color="{x:Static local:Themes.ButtonTextC}"
+                                  IsChecked="False"
+                                  CheckedChanged="OnAIInteractiveChanged"/>
+                        <Label Text="AI Interactive" 
+                               VerticalOptions="Center"
+                               TextColor="{x:Static local:Themes.MessageLabelTextC}"/>
+                    </HorizontalStackLayout>
+                </HorizontalStackLayout>
                 
-                <Image x:Name="GeneratedImage"
-                       Source="{Binding GeneratedImageUrl}"
-                       Aspect="AspectFit"
-                       HeightRequest="200"
-                />
+                <!-- HeyGen Checkbox en HeyGen Avatar op dezelfde lijn -->
+                <HorizontalStackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="Center">
+                    <HorizontalStackLayout Spacing="10">
+                        <CheckBox x:Name="CheckboxHeyGen" 
+                                  VerticalOptions="Center" 
+                                  Color="{x:Static local:Themes.ButtonTextC}" 
+                                  IsChecked="True"
+                                  CheckedChanged="OnHeyGenCheckedChanged"/>
+                        <Label Text="HeyGen Own" 
+                               VerticalOptions="Center"
+                               TextColor="{x:Static local:Themes.MessageLabelTextC}"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <CheckBox x:Name="CheckboxHeyGenStandard"
+                                  VerticalOptions="Center" 
+                                  Color="{x:Static local:Themes.ButtonTextC}"
+                                  IsChecked="False"
+                                  CheckedChanged="OnHeyGenStandardCheckedChanged"/>
+                        <Label Text="HeyGen Avatar" 
+                               VerticalOptions="Center"
+                               TextColor="{x:Static local:Themes.MessageLabelTextC}"/>
+                    </HorizontalStackLayout>
+                </HorizontalStackLayout>
                 
-                <!-- Buttons Alignment -->
-                <HorizontalStackLayout Spacing="20">
-                    <!-- Create Video Button -->
+                <!-- Meer Checkboxes -->
+                <HorizontalStackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="Center">
+                    <HorizontalStackLayout Spacing="10">
+                        <CheckBox x:Name="CheckboxTomMiddle" 
+                                  VerticalOptions="Center" 
+                                  Color="{x:Static local:Themes.ButtonTextC}" 
+                                  IsChecked="True"
+                                  CheckedChanged="OnTomMiddleCheckedChanged"/>
+                        <Label Text="Tom Middle" 
+                               VerticalOptions="Center"
+                               TextColor="{x:Static local:Themes.MessageLabelTextC}"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="10">
+                        <CheckBox x:Name="CheckboxTomYoung"
+                                  VerticalOptions="Center" 
+                                  Color="{x:Static local:Themes.ButtonTextC}"
+                                  IsChecked="False"
+                                  CheckedChanged="OnTomYoungCheckedChanged"/>
+                        <Label Text="Tom Young" 
+                               VerticalOptions="Center"
+                               TextColor="{x:Static local:Themes.MessageLabelTextC}"/>
+                    </HorizontalStackLayout>
+                </HorizontalStackLayout>
+                
+                <!-- Knoppen -->
+                <HorizontalStackLayout Spacing="20" VerticalOptions="Center" HorizontalOptions="Center">
                     <Button Text="Create Video"
                             Clicked="OnCreateVideoClipClicked" 
                             IsVisible="False" />
-                    <!-- Generate Image Button -->
                     <Button Text="Generate Image"
                             Command="{Binding GenerateImageCommand}" />
-                    <Button Text="Credits"
-                            WidthRequest="50"
+                    <Button Text="C-ID"
+                            WidthRequest="100"
                             HeightRequest="50"
                             CornerRadius="25"
                             Clicked="OnCreditsClicked" /> 
-                    <Label Text="AI Interactive" VerticalOptions="Center"
-                           TextColor="{x:Static local:Themes.MessageLabelTextC}"/>
-                    <CheckBox VerticalOptions="Center" 
-                              x:Name="CheckboxAIInteractive"
-                              Color="{x:Static local:Themes.ButtonTextC}"
-                              IsChecked="False"
-                              CheckedChanged="OnAIInteractiveChanged"/>
+                    <Button Text="C-H"
+                            WidthRequest="100"
+                            HeightRequest="50"
+                            CornerRadius="25"
+                            Clicked="OnCreditsHClicked" /> 
                 </HorizontalStackLayout>
+                
+                <!-- Afbeelding Display -->
+                <Image x:Name="GeneratedImage"
+                       Source="{Binding GeneratedImageUrl}"
+                       Aspect="AspectFit"
+                       HeightRequest="200" />
             </VerticalStackLayout>
-            
         </Grid>
-        
     </ContentPage.Content>
 </ContentPage>

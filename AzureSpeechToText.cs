@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.CognitiveServices.Speech; // Azure Speech SDK for speech recognition.
 using Microsoft.CognitiveServices.Speech.Audio; // For handling audio input.
 

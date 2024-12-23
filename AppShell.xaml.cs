@@ -1,4 +1,6 @@
-﻿namespace ZoharBible;
+﻿using Microsoft.Maui.Controls;
+
+namespace ZoharBible;
 
 public partial class AppShell : Shell
 {

@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using AVFoundation;
 using Foundation;
 using NAudio.Wave;

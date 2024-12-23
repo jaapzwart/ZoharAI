@@ -2,6 +2,9 @@
 using Plugin.Maui.Audio;
 using ZoharBible;
 using CommunityToolkit.Maui;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui.Controls.Hosting;
+using Microsoft.Maui.Hosting;
 
 namespace ZoharBible;
 public static class MauiProgram

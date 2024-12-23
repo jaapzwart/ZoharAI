@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HealthKit;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Graphics;
 
 namespace ZoharBible;
 

@@ -328,7 +328,7 @@
         }
       },
       "runtimes": {
-        "ios-arm64": {
+        "iossimulator-arm64": {
           "#import": []
         }
       }

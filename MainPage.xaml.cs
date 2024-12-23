@@ -1,4 +1,7 @@
-﻿using System.Runtime.InteropServices.JavaScript;
+﻿using System;
+using System.Runtime.InteropServices.JavaScript;
+using System.Threading.Tasks;
+using Microsoft.Maui.Controls;
 
 namespace ZoharBible;
 

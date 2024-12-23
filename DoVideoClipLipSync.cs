@@ -1,5 +1,9 @@
+using System;
 using System.Net;
+using System.Net.Http;
+using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 
@@ -10,6 +14,184 @@ namespace ZoharBible;
 /// </summary>
 public static class DoVideoClipLipSync
 {
+    public static async Task<string> getStringFromJson(string jjson)
+    {
+        string jsonString = jjson;
+
+        // Parse the JSON string
+        var jsonDocument = JsonDocument.Parse(jsonString);
+
+        // Extract the video_id
+        string videoId = jsonDocument.RootElement
+            .GetProperty("data")
+            .GetProperty("video_id")
+            .GetString();
+
+        return videoId;
+    }
+    public static async Task<string> checkVideoID(string _key, string _id)
+    {
+       
+            // Replace with your API key and video ID
+            string apiKey = _key;
+            string videoId = _id;
+            string url = $"https://api.heygen.com/v1/video_status.get?video_id={videoId}";
+
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    // Add required headers
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
+
+                    // Make the GET request
+                    HttpResponseMessage response = await client.GetAsync(url);
+
+                    // Read and output the response
+                    string responseString = await response.Content.ReadAsStringAsync();
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return responseString;
+                    }
+                    else
+                    {
+                        return response.StatusCode.ToString();
+                        
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return "An error occurred:";
+                   
+                }
+            }
+        
+    }
+    public static async Task<string> CreateHeyGenVideoAvatar(string _key, string AIText)
+    {
+        string videoID = "";
+        // Replace with your API key
+        string apiKey = _key;
+        string url = "https://api.heygen.com/v2/video/generate";
+        string _tt = AIText;
+            
+        // JSON payload
+        string jsonPayload = $@"
+        {{
+            ""video_inputs"": [
+                {{
+                    ""character"": {{
+                        ""type"": ""avatar"",
+                        ""avatar_id"": ""fb0f46758c5d4298a73d23d52c5f24a4"",
+                        ""avatar_style"": ""normal""
+                    }},
+                    ""voice"": {{
+                        ""type"": ""text"",
+                        ""input_text"": ""{_tt}"",
+                        ""voice_id"": ""26b2064088674c80b1e5fc5ab1a068ec"",
+                        ""speed"": 1.1
+                    }}
+                }}
+            ],
+            ""dimension"": {{
+                ""width"": 1280,
+                ""height"": 720
+            }}
+        }}";
+
+        using (HttpClient client = new HttpClient())
+        {
+            try
+            {
+                // Set up the request
+                client.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
+                StringContent content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+
+                // Make the POST request
+                HttpResponseMessage response = await client.PostAsync(url, content);
+
+                // Read and output the response
+                string responseString = await response.Content.ReadAsStringAsync();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return responseString; 
+                }
+                else
+                {
+                    return response.StatusCode.ToString();
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                return "An error occurred:";
+               
+            }
+        }
+    
+    }
+    public static async Task<string> CreateHeyGenTalkingPhotoVideo(string _apiKey, string AIText, string _photoID)
+    {
+        string apiKey = _apiKey;
+        string url = "https://api.heygen.com/v2/video/generate";
+        string _tt = AIText;
+        // JSON payload
+
+        // JSON payload
+        string jsonPayload = $@"
+        {{
+            ""video_inputs"": [
+                {{
+                    ""character"": {{
+                        ""type"": ""talking_photo"",
+                        ""talking_photo_id"": ""{_photoID}""
+                    }},
+                    ""voice"": {{
+                        ""type"": ""text"",
+                        ""input_text"": ""{_tt}"",
+                        ""voice_id"": ""7v0Lk9jbYKjKYpjoYhK6""
+                    }},
+                    ""background"": {{
+                        ""type"": ""color"",
+                        ""value"": ""#FAFAFA""
+                    }}
+                }}
+            ]
+        }}";
+
+        using (HttpClient client = new HttpClient())
+        {
+            try
+            {
+                // Set up the request
+                client.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
+                StringContent content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+
+                // Make the POST request
+                HttpResponseMessage response = await client.PostAsync(url, content);
+
+                // Read and output the response
+                string responseString = await response.Content.ReadAsStringAsync();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return responseString; // Successfully received a response
+                }
+                else
+                {
+                    return $"Error: {response.StatusCode}\n{responseString}";
+                }
+            }
+            catch (Exception ex)
+            {
+                return $"An error occurred: {ex.Message}";
+            }
+        }
+    }
+
     /// <summary>
     /// Creates a video clip with lip-sync for non-animated avatars. 
     /// </summary>
@@ -53,7 +235,9 @@ public static class DoVideoClipLipSync
         request.AddHeader("authorization", Secrets.ID_Key);
         
         // JSON body for the API request
-        string jsonBody = $"{{\"source_url\":\"https://d-id-public-bucket.s3.us-west-2.amazonaws.com/alice.jpg\",\"script\":{{\"type\":\"text\",\"subtitles\":\"false\",\"provider\":{{\"type\":\"microsoft\",\"voice_id\":\"{GlobalVars.LanguageChoosenByFullName}\"}},\"input\":\"{whatToSay}\"}},\"config\":{{\"fluent\":\"false\",\"pad_audio\":\"0.0\"}},\"user_data\":\"What to talk\"}}";
+        string voicefromMainscreen = GlobalVars.LanguageChoosenByFullName;
+        string manualMaileVoidForTom = "en-GB-RyanNeural";
+        string jsonBody = $"{{\"source_url\":\"https://throwcards.azurewebsites.net/tomm.png\",\"script\":{{\"type\":\"text\",\"subtitles\":\"false\",\"provider\":{{\"type\":\"microsoft\",\"voice_id\":\"{manualMaileVoidForTom}\"}},\"input\":\"{whatToSay}\"}},\"config\":{{\"fluent\":\"false\",\"pad_audio\":\"0.0\"}},\"user_data\":\"What to talk\"}}";
         request.AddJsonBody(jsonBody, false);
         var response = await client.PostAsync(request);
         
