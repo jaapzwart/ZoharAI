@@ -1,8 +1,12 @@
-using System.ComponentModel; // For implementing the INotifyPropertyChanged interface.
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Net.Http; // For implementing the INotifyPropertyChanged interface.
 using System.Text; // For encoding text data.
 using System.Windows.Input; // For creating commands in MVVM patterns.
 using Newtonsoft.Json; // For JSON serialization and deserialization.
-using System.Text.Json; // Alternative for JSON serialization/deserialization.
+using System.Text.Json;
+using System.Threading.Tasks; // Alternative for JSON serialization/deserialization.
 using OpenAI.API.Models; // For interacting with OpenAI models.
 using JsonSerializer = System.Text.Json.JsonSerializer; // Alias for JSON serializer from System.Text.Json.
 

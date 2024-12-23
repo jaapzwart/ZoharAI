@@ -1,3 +1,7 @@
+using System;
+using System.Threading.Tasks;
+using Microsoft.Maui.Controls;
+
 namespace ZoharBible
 {
     /// <summary>

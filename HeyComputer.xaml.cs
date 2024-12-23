@@ -1,5 +1,13 @@
+using System;
+using System.Collections.Generic;
 using System.Text.Json;
+using System.Threading.Tasks;
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Devices;
+using Newtonsoft.Json.Linq;
 using PassKit;
+using RestSharp;
 
 namespace ZoharBible
 {
@@ -163,13 +171,16 @@ namespace ZoharBible
                 GlobalVars.videoTalked = "Bill";
                 if (GlobalVars.AIInteractive)
                 {
-                    GlobalVars.videoTalked = "InteractiveStart";
-                    GlobalVars.anim = true;
-                    await CreateVideoClipClicked();
-                    GlobalVars.anim = false;
-                    GlobalVars.videoTalkedText = GlobalVars.AIInteractiveText;
-                    GlobalVars.videoTalked = "Interactive";
-                    await CreateVideoClipClicked();
+                    if (this.CheckboxHeyGen.IsChecked ||
+                        this.CheckboxHeyGenStandard.IsChecked)
+                    {
+                        string altText = "";
+                        await DoTheTalkingTom(altText);    
+                    }
+                    if (this.CheckboxDID.IsChecked)
+                    {
+                        await Do_DIDTalk();
+                    }
                 }
                 else
                 {
@@ -186,13 +197,16 @@ namespace ZoharBible
                 GlobalVars.videoTalked = "Elon";
                 if (GlobalVars.AIInteractive)
                 {
-                    GlobalVars.videoTalked = "InteractiveStart";
-                    GlobalVars.anim = true;
-                    await CreateVideoClipClicked();
-                    GlobalVars.anim = false;
-                    GlobalVars.videoTalkedText = GlobalVars.AIInteractiveText;
-                    GlobalVars.videoTalked = "Interactive";
-                    await CreateVideoClipClicked();
+                    if (this.CheckboxHeyGen.IsChecked ||
+                        this.CheckboxHeyGenStandard.IsChecked)
+                    {
+                        string altText = "";
+                        await DoTheTalkingTom(altText);    
+                    }
+                    if (this.CheckboxDID.IsChecked)
+                    {
+                        await Do_DIDTalk();
+                    }
                 }
                 else
                 {
@@ -207,13 +221,16 @@ namespace ZoharBible
                 GlobalVars.videoTalked = "Google";
                 if (GlobalVars.AIInteractive)
                 {
-                    GlobalVars.videoTalked = "InteractiveStart";
-                    GlobalVars.anim = true;
-                    await CreateVideoClipClicked();
-                    GlobalVars.anim = false;
-                    GlobalVars.videoTalkedText = GlobalVars.AIInteractiveText;
-                    GlobalVars.videoTalked = "Interactive";
-                    await CreateVideoClipClicked();
+                    if (this.CheckboxHeyGen.IsChecked ||
+                        this.CheckboxHeyGenStandard.IsChecked)
+                    {
+                        string altText = "";
+                        await DoTheTalkingTom(altText);    
+                    }
+                    if (this.CheckboxDID.IsChecked)
+                    {
+                        await Do_DIDTalk();
+                    }
                 }
                 else
                 {
@@ -223,6 +240,64 @@ namespace ZoharBible
             }
         }
 
+        private async Task Do_DIDTalk()
+        {
+            GlobalVars.videoTalked = "InteractiveStart";
+            GlobalVars.anim = true;
+            await CreateVideoClipClicked();
+            GlobalVars.anim = false;
+            GlobalVars.videoTalkedText = GlobalVars.AIInteractiveText;
+            GlobalVars.videoTalked = "Interactive";
+            await CreateVideoClipClicked();
+        }
+
+        private async Task DoTheTalkingTom(string alternateText)
+        {
+            GlobalVars.videoTalked = "InteractiveStart";
+            GlobalVars.anim = true;
+            await CreateVideoClipClicked();
+            GlobalVars.anim = false;
+
+            if (alternateText.Length >= 2)
+            {
+                GlobalVars.videoTalkedText = alternateText;
+            }
+            else
+            {
+                GlobalVars.videoTalkedText = GlobalVars.AIInteractiveText;
+            }
+            GlobalVars.videoTalked = "Interactive";
+            VideoPlayer.Source = await DoVideoClipLipSync.PlayExistingVideo("loading.mp4");
+            await OnHClicked(GlobalVars.videoTalkedText);
+            VideoPlayer.Source = await DoVideoClipLipSync.PlayExistingVideo("loading.mp4");
+            await OnVClicked();
+        }
+        private void OnHeyGenCheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            if (CheckboxHeyGen.IsChecked)
+            {
+                CheckboxHeyGenStandard.IsChecked = false;
+                CheckboxDID.IsChecked = false;
+            }
+        }
+
+        private void OnHeyGenStandardCheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            if (CheckboxHeyGenStandard.IsChecked)
+            {
+                CheckboxHeyGen.IsChecked = false;
+                CheckboxDID.IsChecked = false;
+            }
+        }
+
+        private void OnDIDCheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            if (CheckboxDID.IsChecked)
+            {
+                CheckboxHeyGen.IsChecked = false;
+                CheckboxHeyGenStandard.IsChecked = false;
+            }
+        }
         #region Audio
 
         /// <summary>
@@ -242,6 +317,33 @@ namespace ZoharBible
             }
         }
 
+        // Eventhandler voor CheckboxTomMiddle
+        private void OnTomMiddleCheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            // Controleer of de checkbox is ingeschakeld
+            if (e.Value)
+            {
+                this.CheckboxTomYoung.IsChecked = false;
+            }
+            else
+            {
+               
+            }
+        }
+
+        // Eventhandler voor CheckboxTomYoung
+        private void OnTomYoungCheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            // Controleer of de checkbox is ingeschakeld
+            if (e.Value)
+            {
+                this.CheckboxTomMiddle.IsChecked = false;
+            }
+            else
+            {
+               
+            }
+        }
         /// <summary>
         /// Toggles the AI interaction mode which affects how video content is generated.
         /// </summary>
@@ -258,6 +360,64 @@ namespace ZoharBible
             {
                 GlobalVars.AIInteractive = true;
                 this.CheckboxAIInteractive.IsChecked = true;
+            }
+        }
+
+        private string _vvvid = "";
+        private async Task OnHClicked(string AItext)
+        {
+            // Middle tom bc839a7a94e941fd8ddf2d209ae4a7be
+            // Young tom b77aad01446c4cfd97ee6a2691534687
+            string __photoID = "";
+            
+            if (CheckboxTomYoung.IsChecked)
+                __photoID = "b77aad01446c4cfd97ee6a2691534687";
+            if (CheckboxTomMiddle.IsChecked)
+                __photoID = "bc839a7a94e941fd8ddf2d209ae4a7be";
+            string _id = "";
+            
+            if(this.CheckboxHeyGen.IsChecked) // Own photo avatar
+                _id = await DoVideoClipLipSync.CreateHeyGenTalkingPhotoVideo(Secrets.hgenKey, AItext, __photoID);
+            else // Standard video avatar
+                _id = await DoVideoClipLipSync.CreateHeyGenVideoAvatar(Secrets.hgenKey, AItext);
+            
+            _vvvid = await DoVideoClipLipSync.getStringFromJson(_id);
+            //await DisplayAlert("Message", "Ran the Video Creation", "OK");
+
+        }
+        private async Task OnVClicked()
+        {
+            string _vid = "null";
+            while (_vid.Equals("null") || _vid.Length == 0)
+            {
+                string _vidd = await DoVideoClipLipSync.checkVideoID(
+                    Secrets.hgenKey,
+                    _vvvid);
+                _vid = GetVideoUrlFromJson(_vidd);
+                VideoPlayer.Source = await DoVideoClipLipSync.PlayExistingVideo("loading.mp4");
+            }
+            // await DisplayAlert("Message", "We got the utl:" + '\n' + '\n' +
+            //     _vid, "OK");
+            VideoPlayer.IsVisible = true;
+            VideoPlayer.Source = _vid;
+            VideoPlayer.Play();
+        }
+        public static string GetVideoUrlFromJson(string jsonString)
+        {
+            try
+            {
+                // Parse the JSON string
+                JObject json = JObject.Parse(jsonString);
+
+                // Navigate to "data" -> "video_url"
+                string videoUrl = json["data"]?["video_url"]?.ToString();
+
+                // Return the video_url value or a default message if not found
+                return videoUrl ?? "video_url not found";
+            }
+            catch (Exception ex)
+            {
+                return $"Error parsing JSON: {ex.Message}";
             }
         }
 
@@ -281,6 +441,26 @@ namespace ZoharBible
                 "Created at:" + credit.CreatedAt + '\n' +
                 "TExpire at:" + credit.ExpireAt + '\n' +
                 "Interval:" + credit.ProductBillingInterval + '\n', "OK");
+        }
+        private async void OnCreditsHClicked(object? sender, EventArgs e)
+        {
+            var options = new RestClientOptions("https://api.heygen.com/v2/user/remaining_quota");
+            var client = new RestClient(options);
+            var request = new RestRequest("");
+            request.AddHeader("accept", "application/json");
+            request.AddHeader("x-api-key", "ZWYwZjgyN2NhMWFiNGIzNGI5NTYxNjg4NDA2YjcxYWItMTczNDE5OTM3MA==");
+            var response = await client.GetAsync(request);
+            using JsonDocument doc = JsonDocument.Parse(response.Content);
+
+            // Navigate to "remaining_quota"
+            int remainingQuota = doc.RootElement
+                .GetProperty("data")
+                .GetProperty("remaining_quota")
+                .GetInt32();
+            double _remainingQ = remainingQuota / 60;
+            await DisplayAlert("Credit Info",
+                "Remaining Credits:" + _remainingQ.ToString()
+                , "OK");
         }
         public class Credit
         {
