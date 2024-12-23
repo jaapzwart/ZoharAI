@@ -448,7 +448,7 @@ namespace ZoharBible
             var client = new RestClient(options);
             var request = new RestRequest("");
             request.AddHeader("accept", "application/json");
-            request.AddHeader("x-api-key", "ZWYwZjgyN2NhMWFiNGIzNGI5NTYxNjg4NDA2YjcxYWItMTczNDE5OTM3MA==");
+            request.AddHeader("x-api-key", Secrets.hgenKey);
             var response = await client.GetAsync(request);
             using JsonDocument doc = JsonDocument.Parse(response.Content);
 
